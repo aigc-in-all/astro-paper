@@ -1,6 +1,6 @@
 ---
 title: "NPM vs PNPM: 区别和命令对比"
-pubDatetime: 2024-08-14T18:56:00+08:00
+pubDatetime: 2024-08-13T11:12:44.065Z
 featured: false
 draft: false
 tags:
@@ -11,6 +11,8 @@ description: 详细对比 npm 和 pnpm 的特性与命令
 ---
 
 在 Node.js 生态系统中,包管理器扮演着至关重要的角色。npm (Node Package Manager) 长期以来一直是最流行的选择,但近年来,pnpm (performant npm) 因其独特的优势正在获得越来越多的关注。本文将深入探讨 npm 和 pnpm 之间的区别,并对比它们的常用命令。
+
+## Table of contents
 
 ## npm 和 pnpm 的主要区别
 
