@@ -70,3 +70,7 @@ description: 介绍一些 Next.js 开发全栈应用时常用的技术栈
 ## Logo 设计
 
 - [brandmark](https://app.brandmark.io/v3/)
+
+## 动画库
+
+- [Framer Motion](https://www.framer.com/motion/)
