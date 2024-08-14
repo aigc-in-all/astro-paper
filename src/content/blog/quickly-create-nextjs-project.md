@@ -49,6 +49,13 @@ pnpm dlx shadcn-ui@latest add button
 
 [官方组件库](https://ui.shadcn.com/docs/components/accordion)
 
+### 安装图标库
+
+```bash
+pnpm install lucide-react
+```
+更多其它图标库选择，可以 [参考](/nextjs-fullstack-tech-stack-guide)
+
 ## 配置 Markdown（隐私条款、利用规约、博客）
 
 [给 Next.js 项目添加博客](/add-blog-to-nextjs-project)
