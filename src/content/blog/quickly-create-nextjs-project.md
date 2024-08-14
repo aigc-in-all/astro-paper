@@ -1,6 +1,7 @@
 ---
 title: "快速创建 Next.js 项目"
 pubDatetime: 2024-08-14T07:56:02.002Z
+modDatetime: 2024-08-14T08:13:58.871Z
 featured: false
 draft: false
 tags:
@@ -15,6 +16,12 @@ description: 快速创建 Next.js 项目，包括一些基本配置
 
 ```bash
 pnpm create next-app@latest my-app --typescript --tailwind --eslint
+```
+
+更新依赖
+
+```bash
+pnpm update
 ```
 
 ## 安装 shadcn-ui 组件库
