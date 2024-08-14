@@ -46,7 +46,7 @@ description: 介绍一些 Next.js 开发全栈应用时常用的技术栈
 | [Preline UI](https://preline.co/) ([GitHub](https://github.com/htmlstreamofficial/preline))   | 4.4k         | 基于 Tailwind CSS 的开源 UI 组件库和模板。                            |
 | [Float UI](https://www.floatui.com/) ([GitHub](https://github.com/MarsX-dev/floatui))         | 3.3k         | 提供现成的 Tailwind CSS 组件和模板。                                 |
 | [Sailboat UI](https://sailboatui.com/) ([GitHub](https://github.com/sailboatui/sailboatui))   | 1.2k         | 基于 Tailwind CSS 的组件库,专注于美观和易用性。                           |
-> 以上数据统计自 2022 年 8 月 14 日
+> 以上数据统计自 2024 年 8 月 14 日
 
 ## 图标库
 
@@ -65,7 +65,7 @@ description: 介绍一些 Next.js 开发全栈应用时常用的技术栈
 | [Eva Icons](https://akveo.github.io/eva-icons/) ([GitHub](https://github.com/akveo/eva-icons))                     | 8.6k         | 一包超过480个精美设计的开源图标,用于常见操作和项目。                       |
 | [SVG Repo](https://www.svgrepo.com/)                                                                               | N/A          | 大型的SVG图标和矢量图形集合库,提供免费下载和使用。不是开源项目,没有GitHub仓库。      |
 | [Flaticon](https://www.flaticon.com/)                                                                              | N/A          | 提供大量免费和付费的矢量图标和贴纸。不是开源项目,没有GitHub仓库。               |
-> 以上数据统计自 2022 年 8 月 14 日
+> 以上数据统计自 2024 年 8 月 14 日
 
 ## Logo 设计
 
