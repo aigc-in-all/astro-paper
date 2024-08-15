@@ -197,4 +197,4 @@ export default ImageUploader;
 ```
 效果
 
-![uppy demo](../../assets/images/uppy-demo.jpg)
+![something](@assets/images/uppy-demo.jpg)
