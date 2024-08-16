@@ -58,4 +58,4 @@ pnpm install lucide-react
 
 ## 配置 Markdown（隐私条款、利用规约、博客）
 
-[给 Next.js 项目添加博客](/add-blog-to-nextjs-project)
+[给 Next.js 项目添加博客](/posts/add-blog-to-nextjs-project)
