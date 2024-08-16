@@ -5,6 +5,7 @@ featured: false
 draft: false
 tags:
   - nextjs
+  - cloudflare
 description: 记录怎么把 Next.js 项目部署到 Cloudflare Pages
 ---
 
