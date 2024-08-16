@@ -29,7 +29,7 @@ npm create cloudflare@latest my-next-app -- --framework=next
 # pnpm
 pnpm create cloudflare@latest my-next-app -- --framework=next
 ```
-[npm vs pnpm vs yarn](/posts/npm-pnpm-yarn-diferences-and-commands)
+[npm vs pnpm vs yarn](/posts/npm-pnpm-yarn-differences-and-commands)
 
 ### 已存在的项目
 
