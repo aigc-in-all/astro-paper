@@ -36,6 +36,9 @@ pnpm create cloudflare@latest my-next-app -- --framework=next
 #### 1. 安装 next-on-pages
 
 ```bash
+# npm
+npm install --save-dev @cloudflare/next-on-pages
+# pnpm
 pnpm add -D @cloudflare/next-on-pages
 ```
 
@@ -92,6 +95,9 @@ export const runtime = "edge";
 #### 6. 部署到 Cloudflare Pages
 
 ```bash
+# npm
 npm run deploy
+# pnpm
+pnpm run deploy
 ```
 ## 部署（直接从 Github 导入）
