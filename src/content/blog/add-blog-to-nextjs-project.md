@@ -28,6 +28,7 @@ pnpm add lucide-react
 
 ```ts
 // tailwind.config.ts
+
 import type { Config } from "tailwindcss";
 import typography from "@tailwindcss/typography"; <-- Add this line
 
@@ -53,31 +54,28 @@ export default config;
 
 ## 创建示例 Markdown 文章
 
+posts/about-us.md
 ```md
-// posts/about-us.md
 # About Us
 
 welcome
 ```
-
+posts/privacy-policy.md
 ```md
-// posts/privacy-policy.md
 # Privacy Policy
 
 Last updated: 2024-03-15
 
 ```
-
+posts/terms-of-service.md
 ```md
-// posts/terms-of-service.md
 # Terms of Service
 
 Last updated: 2024-03-15
 
 ```
-
+posts/blog/welcome.md
 ```md
-// posts/blog/welcome.md
 ---
 title: "welcome"
 slug: "welcome"
@@ -92,6 +90,7 @@ welcome
 
 ```ts
 // lib/posts.ts
+
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -186,8 +185,7 @@ export function getAboutContent(): string {
 
 ```tsx
 // app/privacy/page.tsx
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+
 import { metaConfig } from "@/config/site";
 import { getPrivacyPolicyContent } from "@/lib/posts";
 import { Metadata } from "next";
@@ -222,8 +220,7 @@ export default function PrivacyPage() {
 
 ```tsx
 // app/terms/page.tsx
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+
 import { metaConfig } from "@/config/site";
 import { getTermsOfServiceContent } from "@/lib/posts";
 import { Metadata } from "next";
@@ -258,13 +255,12 @@ export default function TermsPage() {
 
 ```tsx
 // app/blog/page.tsx
+
 import Link from 'next/link';
 import { getBlogList } from '@/lib/posts';
 import { Calendar, User } from 'lucide-react';
 import { Metadata } from 'next';
 import { metaConfig } from '@/config/site';
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
     title: `Brown Noise Blog | ${metaConfig.name}`,
@@ -278,40 +274,36 @@ export default function BlogList() {
     const posts = getBlogList();
 
     return (
-        <div className="flex flex-col">
-            <Header />
-            <main className="w-full max-w-5xl mx-auto p-4 md:p-6 flex-grow">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {posts.map((post) => (
-                        <Link href={`/blog/${post.metadata.slug}`} key={post.metadata.slug}>
-                            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
-                                <div className="p-6">
-                                    <h2 className="text-xl font-semibold mb-2 hover:text-blue-600 transition-colors duration-300">
-                                        {post.metadata.title}
-                                    </h2>
-                                    {/* <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+        <main className="w-full max-w-5xl mx-auto p-4 md:p-6 flex-grow">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {posts.map((post) => (
+                    <Link href={`/blog/${post.metadata.slug}`} key={post.metadata.slug}>
+                        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+                            <div className="p-6">
+                                <h2 className="text-xl font-semibold mb-2 hover:text-blue-600 transition-colors duration-300">
+                                    {post.metadata.title}
+                                </h2>
+                                {/* <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
                                     {post.metadata.description || "No description available"}
                                 </p> */}
-                                    <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
-                                        <span className="flex items-center mr-4">
-                                            <Calendar className="mr-1 h-4 w-4" />
-                                            {post.metadata.dateStr}
+                                <div className="flex items-center text-sm text-gray-500 dark:text-gray-400">
+                                    <span className="flex items-center mr-4">
+                                        <Calendar className="mr-1 h-4 w-4" />
+                                        {post.metadata.dateStr}
+                                    </span>
+                                    {post.metadata.author && (
+                                        <span className="flex items-center">
+                                            <User className="mr-1 h-4 w-4" />
+                                            {post.metadata.author}
                                         </span>
-                                        {post.metadata.author && (
-                                            <span className="flex items-center">
-                                                <User className="mr-1 h-4 w-4" />
-                                                {post.metadata.author}
-                                            </span>
-                                        )}
-                                    </div>
+                                    )}
                                 </div>
                             </div>
-                        </Link>
-                    ))}
-                </div>
-            </main>
-            <Footer />
-        </div>
+                        </div>
+                    </Link>
+                ))}
+            </div>
+        </main>
     );
 }
 ```
@@ -320,13 +312,12 @@ export default function BlogList() {
 
 ```tsx
 // app/blog/[slug]/page.tsx
+
 import { MDXRemote } from 'next-mdx-remote/rsc';
 import { getAllBlogSlugs, getBlogData } from '@/lib/posts';
 import { Calendar, User, Tag, ArrowLeft } from 'lucide-react';
 import { Metadata } from 'next';
 import { metaConfig } from '@/config/site';
-import Footer from '@/components/Footer';
-import Header from '@/components/Header';
 import Link from 'next/link';
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -355,46 +346,42 @@ export default function BlogPost({ params }: Props) {
     const postData = getBlogData(params.slug);
 
     return (
-        <div className="flex flex-col">
-            <Header />
-            <main className="w-full max-w-5xl mx-auto p-4 md:p-6 flex-grow">
-                <article>
-                    <header className="mb-8 text-center">
-                        <h1 className="text-4xl font-bold mb-4">{postData.metadata.title}</h1>
-                        <div className="flex flex-wrap justify-center items-center space-x-4 text-sm text-muted-foreground mb-4">
+        <main className="w-full max-w-5xl mx-auto p-4 md:p-6 flex-grow">
+            <article>
+                <header className="mb-8 text-center">
+                    <h1 className="text-4xl font-bold mb-4">{postData.metadata.title}</h1>
+                    <div className="flex flex-wrap justify-center items-center space-x-4 text-sm text-muted-foreground mb-4">
+                        <span className="flex items-center">
+                            <Calendar className="mr-1 h-4 w-4" />
+                            {postData.metadata.dateStr}
+                        </span>
+                        {postData.metadata.author && (
                             <span className="flex items-center">
-                                <Calendar className="mr-1 h-4 w-4" />
-                                {postData.metadata.dateStr}
+                                <User className="mr-1 h-4 w-4" />
+                                {postData.metadata.author}
                             </span>
-                            {postData.metadata.author && (
-                                <span className="flex items-center">
-                                    <User className="mr-1 h-4 w-4" />
-                                    {postData.metadata.author}
-                                </span>
-                            )}
-                        </div>
-                        {postData.metadata.tags && postData.metadata.tags.length > 0 && (
-                            <div className="flex justify-center items-center space-x-2">
-                                <Tag className="h-4 w-4 text-muted-foreground" />
-                                {postData.metadata.tags.map((tag) => (
-                                    <span key={tag}>{tag}</span>
-                                ))}
-                            </div>
                         )}
-                    </header>
-                    <div className="max-w-none prose dark:prose-invert">
-                        <MDXRemote source={postData.content} />
                     </div>
-                </article>
-                <Link
-                    href="/blog"
-                    className="flex items-center my-8 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-300">
-                    <ArrowLeft className="mr-2" size={20} />
-                    <span className="underline">Back</span>
-                </Link>
-            </main>
-            <Footer />
-        </div>
+                    {postData.metadata.tags && postData.metadata.tags.length > 0 && (
+                        <div className="flex justify-center items-center space-x-2">
+                            <Tag className="h-4 w-4 text-muted-foreground" />
+                            {postData.metadata.tags.map((tag) => (
+                                <span key={tag}>{tag}</span>
+                            ))}
+                        </div>
+                    )}
+                </header>
+                <div className="max-w-none prose dark:prose-invert">
+                    <MDXRemote source={postData.content} />
+                </div>
+            </article>
+            <Link
+                href="/blog"
+                className="flex items-center my-8 text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-300">
+                <ArrowLeft className="mr-2" size={20} />
+                <span className="underline">Back</span>
+            </Link>
+        </main>
     );
 }
 ```
