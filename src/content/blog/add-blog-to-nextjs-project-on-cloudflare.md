@@ -5,6 +5,7 @@ featured: false
 draft: false
 tags:
   - nextjs
+  - cloudflare
 description: 快速给 Next.js 项目添加博客功能，包括隐私条款、利用规约等
 ---
 
