@@ -40,7 +40,7 @@ yarn add @uppy/core @uppy/dashboard @uppy/xhr-upload @uppy/tus @uppy/compressor
 
 ### 2.引入 Uppy
 
-在你的 JavaScript 文件中引入 Uppy:
+在你的组件中引入 Uppy:
 
 ```typescript
 import Uppy, { UploadResult } from '@uppy/core'
