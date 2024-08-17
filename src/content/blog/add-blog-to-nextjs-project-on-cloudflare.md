@@ -295,6 +295,13 @@ pnpm posts
 ```
 运行成功后，将会在 `lib/posts` 目录下生成一批 JSON 文件。
 
+> 记得在 `.gitignore` 里把自动生成的 JSON 文件过滤掉
+
+```
+# script auto-generated files
+lib/posts
+```
+
 
 ### 从 JSON 文件读取博客数据
 
