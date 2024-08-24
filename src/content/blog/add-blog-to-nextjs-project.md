@@ -215,7 +215,6 @@ export default function PrivacyPage() {
                         </div>
                     </header>
                     <div className="max-w-none prose dark:prose-invert">
-                        {/* <MDXRemote source={post.content} /> */}
                         <MDXRemote source={post.content} />
                     </div>
                 </article>
