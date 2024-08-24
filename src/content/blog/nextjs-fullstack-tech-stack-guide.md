@@ -21,6 +21,7 @@ description: 介绍一些 Next.js 开发全栈应用时常用的技术栈
 - [Vercel Blob](https://vercel.com/docs/storage/vercel-blob)
 - [Vercel Postgres](https://vercel.com/docs/storage/vercel-postgres)
 - [PlanetScale](https://planetscale.com/)
+- [Neon](https://neon.tech/)
 
 ## ORM
 
