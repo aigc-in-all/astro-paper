@@ -96,7 +96,7 @@ brew install zsh-autosuggestions
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 ```
 
-### 4. 安装 NVM
+### 5. 安装 NVM
 
 > 官网:https://github.com/nvm-sh/nvm
 
@@ -149,7 +149,7 @@ node --version
 npm --version
 ```
 
-### 5. 安装 pnpm
+### 6. 安装 pnpm
 
 使用 Homebrew 安装 pnpm：
 ```bash
@@ -161,7 +161,7 @@ brew install pnpm
 pnpm --version
 ```
 
-### 6. 安装 Python
+### 7. 安装 Python
 
 使用 Homebrew 安装 Python 3:
 ```bash
