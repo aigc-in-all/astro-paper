@@ -1,11 +1,12 @@
 ---
 title: "快速创建 Next.js 项目"
 pubDatetime: 2024-08-14T07:56:02.002Z
-modDatetime: 2024-08-14T08:13:58.871Z
+modDatetime: 2024-10-26T16:05:05.019Z
 featured: false
 draft: false
 tags:
   - nextjs
+  - shadcn-ui
 description: 快速创建 Next.js 项目，包括一些基本配置
 ---
 
@@ -14,11 +15,13 @@ description: 快速创建 Next.js 项目，包括一些基本配置
 
 ## 创建 Next.js 项目
 
+官网：https://nextjs.org/docs/getting-started/installation
+
 ```bash
 pnpm create next-app@latest my-app --typescript --tailwind --eslint
 ```
 
-更新依赖
+更新依赖（可选）
 
 ```bash
 pnpm update
@@ -26,13 +29,15 @@ pnpm update
 
 ## 安装 shadcn-ui 组件库
 
+官网：https://ui.shadcn.com/docs/installation/next
+
 ### 初始化项目
 
 ```bash
-pnpm dlx shadcn-ui@latest init
+pnpm dlx shadcn@latest init
 ```
 
-在配置 `components.json` 时会提示风格选择
+在配置 `components.json` 时会提示风格选择（一般一路默认就行了）
 
 ```
 Which style would you like to use? › Default
@@ -44,18 +49,10 @@ Do you want to use CSS variables for colors? › no / yes
 ### 安装组件
 
 ```bash
-pnpm dlx shadcn-ui@latest add button
+pnpm dlx shadcn@latest add button
+
+# 常用
+pnpm dlx shadcn@latest add button card input select sheet sonner
 ```
 
-[官方组件库](https://ui.shadcn.com/docs/components/accordion)
-
-### 安装图标库
-
-```bash
-pnpm install lucide-react
-```
-更多其它图标库选择，可以 [参考](/nextjs-fullstack-tech-stack-guide)
-
-## 配置 Markdown（隐私条款、利用规约、博客）
-
-[给 Next.js 项目添加博客](/posts/add-blog-to-nextjs-project)
+官方组件库：https://ui.shadcn.com/docs/components/accordion
