@@ -90,10 +90,12 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 ```bash
 brew install zsh-autosuggestions
 ```
+> 注意看输出，有说要怎么添加到环境变量
 
 在 `.zshrc` 添加：
 ```
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+# zsh-autosuggestions
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 ```
 
 ### 5. 安装 NVM
