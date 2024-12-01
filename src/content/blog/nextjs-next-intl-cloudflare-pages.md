@@ -270,4 +270,4 @@ npx http-server
 pnpm run deploy
 ```
 
-最后的效果：https://nextjs-template-7n9.pages.dev/
+最后的效果：https://nextjs-next-intl-cfpages.pages.dev/
