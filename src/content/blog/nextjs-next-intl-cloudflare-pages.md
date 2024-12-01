@@ -50,7 +50,134 @@ Cloudflare Pages 是一个静态网站托管服务，意味着我们需要把 Ne
 
 ## 安装 next-intl
 
-跟着 Next.js 的官网操作就行了：https://next-intl-docs.vercel.app/
+跟着 Next.js 的官网操作就行了：https://next-intl-docs.vercel.app/docs/getting-started/app-router/with-i18n-routing
+
+```bash
+pnpm add next-intl
+```
+
+创建 `messages/en.json`
+
+```json
+{
+  "HomePage": {
+    "title": "Hello world!",
+    "about": "Go to the about page"
+  }
+}
+```
+
+修改 `next.config.mjs`
+
+```mjs
+import createNextIntlPlugin from 'next-intl/plugin';
+ 
+const withNextIntl = createNextIntlPlugin();
+ 
+/** @type {import('next').NextConfig} */
+const nextConfig = {};
+ 
+export default withNextIntl(nextConfig);
+```
+
+创建 `i18n/routing.ts`
+
+```ts
+import { defineRouting } from 'next-intl/routing';
+import { createNavigation } from 'next-intl/navigation';
+import { isDevelopment } from '@/lib/utils';
+
+export const routing = defineRouting({
+    // A list of all locales that are supported
+    locales: ['en', 'zh-TW', 'de'],
+
+    // Used when no locale matches
+    defaultLocale: 'en',
+
+    // Prefix the locale to the pathname based on environment
+    localePrefix: isDevelopment() ? 'always' : 'as-needed'
+});
+
+export type Locale = (typeof routing.locales)[number];
+
+// Lightweight wrappers around Next.js' navigation APIs
+// that will consider the routing configuration
+export const { Link, redirect, usePathname, useRouter, getPathname } =
+    createNavigation(routing);
+```
+
+创建 `i18n/request.ts`
+```ts
+import { getRequestConfig } from 'next-intl/server';
+import { routing } from './routing';
+
+export default getRequestConfig(async ({ requestLocale }) => {
+    // This typically corresponds to the `[locale]` segment
+    let locale = await requestLocale;
+
+    // Ensure that a valid locale is used
+    if (!locale || !routing.locales.includes(locale as any)) {
+        locale = routing.defaultLocale;
+    }
+
+    return {
+        locale,
+        messages: (await import(`../messages/${locale}.json`)).default
+    };
+});
+```
+
+修改 `app/[locale]/layout.tsx`
+```tsx
+import {NextIntlClientProvider} from 'next-intl';
+import {getMessages} from 'next-intl/server';
+import {notFound} from 'next/navigation';
+import {routing} from '@/i18n/routing';
+ 
+export default async function LocaleLayout({
+  children,
+  params: {locale}
+}: {
+  children: React.ReactNode;
+  params: {locale: string};
+}) {
+  // Ensure that the incoming `locale` is valid
+  if (!routing.locales.includes(locale as any)) {
+    notFound();
+  }
+ 
+  // Providing all messages to the client
+  // side is the easiest way to get started
+  const messages = await getMessages();
+ 
+  return (
+    <html lang={locale}>
+      <body>
+        <NextIntlClientProvider messages={messages}>
+          {children}
+        </NextIntlClientProvider>
+      </body>
+    </html>
+  );
+}
+```
+
+修改 `app/[locale]/page.tsx`
+
+```tsx
+import {useTranslations} from 'next-intl';
+import {Link} from '@/i18n/routing';
+ 
+export default function HomePage() {
+  const t = useTranslations('HomePage');
+  return (
+    <div>
+      <h1>{t('title')}</h1>
+      <Link href="/about">{t('about')}</Link>
+    </div>
+  );
+}
+```
 
 ## 配置 Static Export
 
