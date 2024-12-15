@@ -20,7 +20,7 @@ description: 详细记录把 Next.js 项目部署到 GitHub Pages 的两种方�
 
 ## 方式一（单仓库）
 
-单个仓库的方式，关键在于github action的配置。
+单个仓库的方式，关键在于 github action 的配置。
 
 在项目根目录创建 `.github/workflows/nextjs.yml` 文件，内容如下：
 
@@ -106,7 +106,7 @@ jobs:
 
 ## 方式二（多仓库）
 
-假设我们用 A 仓库存储源码（private 或 public都可以），B 仓库存产物（必须 public），用 B 仓库部署到 Github Pages。
+假设我们用 A 仓库存储源码（private 或 public 都可以），B 仓库存产物（必须 public），用 B 仓库部署到 Github Pages。
 
 ### 1. 源码仓库（A）
 

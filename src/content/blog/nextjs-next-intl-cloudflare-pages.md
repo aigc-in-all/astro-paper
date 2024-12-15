@@ -8,7 +8,7 @@ tags:
   - nextjs
   - next-intl
   - cloudflare
-  - 多语言
+  - i18n
 description: Next.js 多语言项目部署到 Cloudflare Pages，基于 next-intl 实现多语言切换
 ---
 
