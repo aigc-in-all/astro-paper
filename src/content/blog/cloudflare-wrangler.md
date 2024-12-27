@@ -54,13 +54,104 @@ wrangler login [OPTIONS]
 wrangler logout
 ```
 
-## Wrangler D1
+登录之后，可以查询个人信息：
 
-todo
+```bash
+wrangler whoami
+```
 
-## Wrangler KV
+## Wrangler D1([官方文档](https://developers.cloudflare.com/workers/wrangler/commands/#d1))
 
-todo
+- create：创建 D1 数据库
+  ```bash
+  wrangler d1 create <DATABASE_NAME> [OPTIONS]
+  ```
+
+- info：查看 D1 数据库信息
+  ```bash
+  wrangler d1 info <DATABASE_NAME> [OPTIONS]
+  ```
+
+- list：列出 D1 数据库
+  ```bash
+  wrangler d1 list [OPTIONS]
+  ```
+
+- delete：删除 D1 数据库
+  ```bash
+  wrangler d1 delete <DATABASE_NAME> [OPTIONS]
+  ```
+- execute：执行 SQL 语句
+  ```bash
+  wrangler d1 execute <DATABASE_NAME> [OPTIONS]
+  ```
+
+- export：导出 D1 数据库到 .sql 文件
+  ```bash
+  wrangler d1 export <DATABASE_NAME> [OPTIONS]
+  ```
+
+## Wrangler KV Namespace([官方文档](https://developers.cloudflare.com/workers/wrangler/commands/#kv-namespace))
+
+- create：创建 KV 命名空间
+  ```bash
+  wrangler kv namespace create <NAMESPACE> [OPTIONS]
+  ```
+
+- list：列出 KV 命名空间
+  ```bash
+  wrangler kv namespace list
+  ```
+  ```bash
+  npx wrangler kv namespace list | jq "."
+  ```
+
+- delete：删除 KV 命名空间
+  ```bash
+  wrangler kv namespace delete {--binding=<BINDING>|--namespace-id=<NAMESPACE_ID>} [OPTIONS]
+  ```
+
+  ```bash
+  npx wrangler kv namespace delete --binding=MY_KV
+  ```
+
+## Wrangler KV Key([官方文档](https://developers.cloudflare.com/workers/wrangler/commands/#kv-key))
+
+- put: 设置 KV 键值
+  ```bash
+  wrangler kv key put <KEY> {<VALUE>|--path=<PATH>} {--binding=<BINDING>|--namespace-id=<NAMESPACE_ID>} [OPTIONS]
+  ```
+
+  ```bash
+  npx wrangler kv key put --binding=MY_KV "my-key" "some-value"
+  ```
+
+- get: 获取 KV 键值
+  ```bash
+  wrangler kv key get <KEY> {--binding=<BINDING>|--namespace-id=<NAMESPACE_ID>} [OPTIONS]
+  ```
+
+  ```bash
+  npx wrangler kv key get --binding=MY_KV "my-key"
+  ```
+
+- list: 列出 KV 键值
+  ```bash
+  wrangler kv key list {--binding=<BINDING>|--namespace-id=<NAMESPACE_ID>} [OPTIONS]
+  ```
+  
+  ```bash
+  npx wrangler kv key list --binding=MY_KV --prefix="public" | jq "."
+  ```
+
+- delete: 删除 KV 键值
+  ```bash
+  wrangler kv key delete <KEY> {--binding=<BINDING>|--namespace-id=<NAMESPACE_ID>} [OPTIONS]
+  ```
+
+  ```bash
+  npx wrangler kv key delete --binding=MY_KV "my-key"
+  ```
 
 ## Wrangler R2 Bucket([官方文档](https://developers.cloudflare.com/workers/wrangler/commands/#r2-bucket))
 
@@ -106,3 +197,34 @@ todo
   wrangler r2 object delete <OBJECT_PATH> [OPTIONS]
   ```
 
+## Wragler Deploy([官方文档](https://developers.cloudflare.com/workers/wrangler/commands/#deploy))
+
+部署 Worker 到 Cloudflare
+
+```bash
+wrangler deploy [<SCRIPT>] [OPTIONS]
+```
+> 该命令的所有选项都不是必需的。 此外，许多选项可以在 `wrangler.toml` 文件中设置。 更多信息请参阅 [wrangler.toml 配置文件](https://developers.cloudflare.com/workers/wrangler/configuration/)。
+
+## Wrangler Pages([官方文档](https://developers.cloudflare.com/workers/wrangler/commands/#pages))
+
+- project list：列出 Pages 项目
+  ```bash
+  wrangler pages project list
+  ```
+
+- deploy：部署 Pages
+  ```bash
+  wrangler pages deploy <BUILD_OUTPUT_DIRECTORY> [OPTIONS]
+  ```
+  举例：
+
+  ```json
+  {
+    ...
+    "scripts": {
+      "deploy": "next build && wrangler pages deploy out --project-name xxx"
+    }
+    ...
+  }
+  ```
