@@ -151,6 +151,14 @@ node --version
 npm --version
 ```
 
+设置淘宝镜像源：
+```bash
+# 设置
+npm config set registry https://registry.npmmirror.com
+# 验证
+npm config get registry
+```
+
 ### 6. 安装 pnpm
 
 使用 Homebrew 安装 pnpm：
